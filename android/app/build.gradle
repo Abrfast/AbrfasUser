@@ -5,6 +5,7 @@ plugins {
     id "dev.flutter.flutter-gradle-plugin"
     id "com.google.gms.google-services"
     id "com.google.firebase.crashlytics"
+    
 }
 
 def localProperties = new Properties()
@@ -33,7 +34,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.sixamtech.demandium.user"
+    namespace "com.abr.fast.customer"
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
@@ -49,7 +50,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
     defaultConfig {
-        applicationId "com.sixamtech.demandium.user"
+        applicationId "com.abr.fast.customer"
         minSdkVersion 21
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
@@ -79,4 +80,7 @@ flutter {
 
 dependencies {
     implementation "com.google.firebase:firebase-messaging:23.4.1"
+    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+    implementation 'com.google.firebase:firebase-analytics:21.0.0'
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
 }

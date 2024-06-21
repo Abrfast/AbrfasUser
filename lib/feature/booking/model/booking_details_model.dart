@@ -13,7 +13,9 @@ class BookingDetailsModel {
   BookingDetailsModel.fromJson(Map<String, dynamic> json) {
     responseCode = json['response_code'];
     message = json['message'];
-    content = json['content'] != null ? BookingDetailsContent.fromJson(json['content']) : null;
+    content = json['content'] != null
+        ? BookingDetailsContent.fromJson(json['content'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -59,48 +61,45 @@ class BookingDetailsContent {
   String? bookingOtp;
   List<String>? photoEvidence;
   double? extraFee;
-  double ? additionalCharge;
-  double ? totalReferralDiscountAmount;
-
-
+  double? additionalCharge;
+  double? totalReferralDiscountAmount;
+  int? amountFlag;
 
   BookingDetailsContent(
       {this.id,
-        this.readableId,
-        this.customerId,
-        this.providerId,
-        this.zoneId,
-        this.bookingStatus,
-        this.isPaid,
-        this.paymentMethod,
-        this.transactionId,
-        this.totalBookingAmount,
-        this.totalTaxAmount,
-        this.totalDiscountAmount,
-        this.serviceSchedule,
-        this.serviceAddressId,
-        this.createdAt,
-        this.updatedAt,
-        this.categoryId,
-        this.subCategoryId,
-        this.detail,
-        this.scheduleHistories,
-        this.statusHistories,
-        this.partialPayments,
-        this.serviceAddress,
-        this.customer,
-        this.provider,
-        this.serviceman,
-        this.totalCampaignDiscountAmount,
-        this.totalCouponDiscountAmount,
-        this.bookingOtp,
-        this.photoEvidence,
-        this.extraFee,
-        this.additionalCharge,
-        this.totalReferralDiscountAmount
-
-
-      });
+      this.readableId,
+      this.customerId,
+      this.providerId,
+      this.zoneId,
+      this.bookingStatus,
+      this.isPaid,
+      this.paymentMethod,
+      this.transactionId,
+      this.totalBookingAmount,
+      this.totalTaxAmount,
+      this.totalDiscountAmount,
+      this.serviceSchedule,
+      this.serviceAddressId,
+      this.createdAt,
+      this.updatedAt,
+      this.categoryId,
+      this.subCategoryId,
+      this.detail,
+      this.scheduleHistories,
+      this.statusHistories,
+      this.partialPayments,
+      this.serviceAddress,
+      this.customer,
+      this.provider,
+      this.serviceman,
+      this.totalCampaignDiscountAmount,
+      this.totalCouponDiscountAmount,
+      this.bookingOtp,
+      this.photoEvidence,
+      this.extraFee,
+      this.additionalCharge,
+      this.totalReferralDiscountAmount,
+      this.amountFlag});
 
   BookingDetailsContent.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -112,7 +111,8 @@ class BookingDetailsContent {
     isPaid = json['is_paid'];
     paymentMethod = json['payment_method'];
     transactionId = json['transaction_id'];
-    totalBookingAmount = double.tryParse(json['total_booking_amount'].toString());
+    totalBookingAmount =
+        double.tryParse(json['total_booking_amount'].toString());
     totalTaxAmount = json['total_tax_amount'];
     totalDiscountAmount = json['total_discount_amount'];
     serviceSchedule = json['service_schedule'];
@@ -136,7 +136,6 @@ class BookingDetailsContent {
     if (json['status_histories'] != null) {
       statusHistories = <StatusHistories>[];
       json['status_histories'].forEach((v) {
-
         statusHistories!.add(StatusHistories.fromJson(v));
       });
     }
@@ -151,23 +150,27 @@ class BookingDetailsContent {
     serviceAddress = json['service_address'] != null
         ? ServiceAddress.fromJson(json['service_address'])
         : null;
-    customer = json['customer'] != null
-        ? Customer.fromJson(json['customer'])
-        : null;
+    customer =
+        json['customer'] != null ? Customer.fromJson(json['customer']) : null;
     provider = json['provider'] != null
         ? ProviderModel.fromJson(json['provider'])
         : null;
     serviceman = json['serviceman'] != null
         ? Serviceman.fromJson(json['serviceman'])
         : null;
-    totalCampaignDiscountAmount = double.tryParse(json['total_campaign_discount_amount'].toString());
-    totalCouponDiscountAmount = double.tryParse(json['total_coupon_discount_amount'].toString());
+    totalCampaignDiscountAmount =
+        double.tryParse(json['total_campaign_discount_amount'].toString());
+    totalCouponDiscountAmount =
+        double.tryParse(json['total_coupon_discount_amount'].toString());
     bookingOtp = json["booking_otp"].toString();
-    photoEvidence = json["evidence_photos"]!=null? json["evidence_photos"].cast<String>(): [];
+    photoEvidence = json["evidence_photos"] != null
+        ? json["evidence_photos"].cast<String>()
+        : [];
     extraFee = double.tryParse(json["extra_fee"].toString());
     additionalCharge = double.tryParse(json['additional_charge'].toString());
-    totalReferralDiscountAmount = double.tryParse(json['total_referral_discount_amount'].toString());
-
+    totalReferralDiscountAmount =
+        double.tryParse(json['total_referral_discount_amount'].toString());
+        amountFlag = json['amountFlag'];
   }
 
   Map<String, dynamic> toJson() {
@@ -218,6 +221,7 @@ class BookingDetailsContent {
     if (serviceman != null) {
       data['serviceman'] = serviceman!.toJson();
     }
+     data['amountFlag'] = amountFlag;
     return data;
   }
 }
@@ -239,24 +243,23 @@ class BookingContentDetailsItem {
   num? overallCouponDiscountAmount;
   String? serviceName;
 
-
-  BookingContentDetailsItem(
-      {this.id,
-        this.bookingId,
-        this.serviceId,
-        this.variantKey,
-        this.serviceCost,
-        this.quantity,
-        this.discountAmount,
-        this.taxAmount,
-        this.totalCost,
-        this.createdAt,
-        this.updatedAt,
-        this.service,
-        this.campaignDiscountAmount,
-        this.overallCouponDiscountAmount,
-        this.serviceName,
-      });
+  BookingContentDetailsItem({
+    this.id,
+    this.bookingId,
+    this.serviceId,
+    this.variantKey,
+    this.serviceCost,
+    this.quantity,
+    this.discountAmount,
+    this.taxAmount,
+    this.totalCost,
+    this.createdAt,
+    this.updatedAt,
+    this.service,
+    this.campaignDiscountAmount,
+    this.overallCouponDiscountAmount,
+    this.serviceName,
+  });
 
   BookingContentDetailsItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -270,9 +273,10 @@ class BookingContentDetailsItem {
     totalCost = json['total_cost'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    service = json['service'] != null ? Service.fromJson(json['service']) : null;
+    service =
+        json['service'] != null ? Service.fromJson(json['service']) : null;
     campaignDiscountAmount = json['campaign_discount_amount'];
-    overallCouponDiscountAmount =json['overall_coupon_discount_amount'];
+    overallCouponDiscountAmount = json['overall_coupon_discount_amount'];
     serviceName = json['service_name'];
   }
 
@@ -310,12 +314,12 @@ class ScheduleHistories {
 
   ScheduleHistories(
       {this.id,
-        this.bookingId,
-        this.changedBy,
-        this.schedule,
-        this.createdAt,
-        this.updatedAt,
-        this.user});
+      this.bookingId,
+      this.changedBy,
+      this.schedule,
+      this.createdAt,
+      this.updatedAt,
+      this.user});
 
   ScheduleHistories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -354,13 +358,13 @@ class StatusHistories {
 
   StatusHistories(
       {this.id,
-        this.bookingId,
-        this.changedBy,
-        this.bookingStatus,
-        this.schedule,
-        this.createdAt,
-        this.updatedAt,
-        this.user});
+      this.bookingId,
+      this.changedBy,
+      this.bookingStatus,
+      this.schedule,
+      this.createdAt,
+      this.updatedAt,
+      this.user});
 
   StatusHistories.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -389,8 +393,6 @@ class StatusHistories {
   }
 }
 
-
-
 class ServiceAddress {
   int? id;
   String? userId;
@@ -410,20 +412,20 @@ class ServiceAddress {
 
   ServiceAddress(
       {this.id,
-        this.userId,
-        this.lat,
-        this.lon,
-        this.city,
-        this.street,
-        this.zipCode,
-        this.country,
-        this.address,
-        this.createdAt,
-        this.updatedAt,
-        this.addressType,
-        this.contactPersonName,
-        this.contactPersonNumber,
-        this.addressLabel});
+      this.userId,
+      this.lat,
+      this.lon,
+      this.city,
+      this.street,
+      this.zipCode,
+      this.country,
+      this.address,
+      this.createdAt,
+      this.updatedAt,
+      this.addressType,
+      this.contactPersonName,
+      this.contactPersonNumber,
+      this.addressLabel});
 
   ServiceAddress.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -475,12 +477,12 @@ class PartialPayment {
 
   PartialPayment(
       {this.id,
-        this.bookingId,
-        this.paidWith,
-        this.paidAmount,
-        this.dueAmount,
-        this.createdAt,
-        this.updatedAt});
+      this.bookingId,
+      this.paidWith,
+      this.paidAmount,
+      this.dueAmount,
+      this.createdAt,
+      this.updatedAt});
 
   PartialPayment.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -504,4 +506,3 @@ class PartialPayment {
     return data;
   }
 }
-

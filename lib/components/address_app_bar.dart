@@ -1,12 +1,14 @@
+import 'package:demandium/controller/call_controller.dart';
 import 'package:get/get.dart';
 import 'package:demandium/components/core_export.dart';
 
 class AddressAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool? backButton;
   const AddressAppBar({super.key, this.backButton = true});
-
+ 
   @override
   Widget build(BuildContext context) {
+    
     return AppBar(
       backgroundColor:Get.isDarkMode ? Theme.of(context).cardColor.withOpacity(.2):Theme.of(context).primaryColor,
       shape: Border(
@@ -57,6 +59,15 @@ class AddressAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ],),
                 ),
             ),
+            IconButton(
+          icon: Icon(Icons.phone, size: 20),
+          onPressed: () {
+              final CallController callController = Get.put(CallController());
+              callController.makePhoneCall('1234567890');
+          },
+          //tooltip: 'Make Phone Call',
+          color: Colors.green,
+        ),
             InkWell(
                 hoverColor: Colors.transparent,
                 onTap: () => Get.toNamed(RouteHelper.getNotificationRoute()),

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">YOUR_APP_NAME</string>
-    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
-    <string name="fb_login_protocol_scheme">YOUR_SCHEME</string>
-    <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN</string>
+    <string name="app_name">ABR FAST User</string>
+    <string name="facebook_app_id">1150763376245592</string>
+    <string name="fb_login_protocol_scheme">fb1150763376245592</string>
+    <string name="facebook_client_token">30070ae484e9372e8fafe86ece4f9c5a</string>
 </resources>

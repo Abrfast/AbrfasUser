@@ -80,7 +80,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               const OrderDetailsPageWeb() :  const OrderDetailsPage() : checkoutController.currentPageState == PageState.payment || PageState.payment.name == widget.pageState ?
               PaymentPage(addressId: widget.addressId, tooltipController: tooltipController,fromPage: "checkout",) :
               CompletePage(token: widget.token,),
-
+  
 
               !ResponsiveHelper.isMobile(context) ? (checkoutController.currentPageState == PageState.complete || widget.pageState == 'complete') ?
               const SizedBox(height: 100, child : BackToHomeButtonWidget()) : ProceedToCheckoutButtonWidget(pageState: widget.pageState,addressId: widget.addressId,) :

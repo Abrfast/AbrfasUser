@@ -3,6 +3,8 @@ import 'package:demandium/feature/checkout/widget/order_details_section/provider
 import 'package:demandium/feature/checkout/widget/order_details_section/wallet_payment_card.dart';
 import 'package:get/get.dart';
 
+import '../payment_section/payment_options.dart';
+
 class OrderDetailsPage extends StatelessWidget {
   const OrderDetailsPage({super.key}) ;
 
@@ -25,11 +27,11 @@ class OrderDetailsPage extends StatelessWidget {
         ProviderDetailsCard( providerData: Get.find<CartController>().cartList.first.provider,): const SizedBox(),
 
         Get.find<AuthController>().isLoggedIn() ? const ShowVoucher() : const SizedBox(),
-
+        const WalletPaymentCard(fromPage: 'checkout',),
         showWalletPaymentCart? const WalletPaymentCard(fromPage: 'checkout',): const SizedBox(),
 
-        const CartSummery()
-
+        const CartSummery(),
+        
       ]));
     });
   }

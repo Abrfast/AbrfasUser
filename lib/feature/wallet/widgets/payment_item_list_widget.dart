@@ -220,7 +220,7 @@ class _PaymentMethodListWidgetState extends State<PaymentMethodListWidget> {
     String callbackUrl = GetPlatform.isWeb ? "$protocol//$hostname:$port$path" : AppConstants.baseUrl;
 
     String platform = GetPlatform.isWeb ? "web" : "app" ;
-
+   
 
     url = '${AppConstants.baseUrl}/payment?payment_method=$paymentGateway&access_token=${base64Url.encode(utf8.encode(userId))}'
         '&callback=$callbackUrl&amount=$amount&payment_platform=$platform&is_add_fund=1';

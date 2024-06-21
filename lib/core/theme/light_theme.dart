@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData light = ThemeData(
   useMaterial3: false,
   fontFamily: 'Ubuntu',
-  primaryColor: const Color(0xFF0572C2),
+  primaryColor: Color(0xFF473FA8),
   primaryColorLight: const Color(0xFFF0F4F8),
   primaryColorDark: const Color(0xFF10324A),
   secondaryHeaderColor: const Color(0xFF758493),
@@ -19,8 +19,8 @@ ThemeData light = ThemeData(
   textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: const Color(
       0xFF036FBE))),
   colorScheme: const ColorScheme.light(
-    primary: Color(0xFF0776C7),
-    secondary: Color(0xFFFF9900),
+    primary: Color(0xFF473FA8),
+    secondary: Color(0xFFFFCA3D),
     tertiary: Color(0xFFd35221),
     onSecondaryContainer: Color(0xFF02AA05),
     error: Color(0xffed4f55),

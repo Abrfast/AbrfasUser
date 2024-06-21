@@ -4,6 +4,8 @@ import 'package:demandium/components/core_export.dart';
 import 'package:demandium/feature/checkout/widget/row_text.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
+import 'payment_section/payment_options.dart';
+
 class CartSummery extends StatelessWidget {
   const CartSummery({super.key}) ;
 
@@ -100,8 +102,9 @@ class CartSummery extends StatelessWidget {
                     Padding( padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeSmall),
                       child: Divider(color: Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(.6)),
                     ),
-
+                    
                     RowText(title:'grand_total'.tr , price: grandTotal),
+                    PaymentOptionsScreen(maxPrice: grandTotal,minPrice: additionalCharge),
                     (Get.find<CartController>().walletPaymentStatus) ? RowText(title:'paid_by_wallet'.tr , price: paidAmount) : const SizedBox(),
                     (Get.find<CartController>().walletPaymentStatus && isPartialPayment) ? RowText(title:'due_amount'.tr , price: dueAmount) : const SizedBox(),
                   ]),

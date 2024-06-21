@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sixamtech.demandium.user">
+    package="com.abr.fast.customer">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="34" />
 
@@ -24,14 +25,14 @@
     </queries>
 
     <application
-        android:label="Demandium"
+        android:label="ABR FAST"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         android:requestLegacyExternalStorage="true"
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_MAP_KEY"/>
+            android:value="AIzaSyBP6oywVz7FVGZJczItzjQe7zdCGOkKo7s"/>
 
         <provider
             android:name="com.pichillilorenzo.flutter_inappwebview_android.InAppWebViewFileProvider"

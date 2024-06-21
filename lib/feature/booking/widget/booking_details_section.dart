@@ -6,6 +6,7 @@ import 'package:demandium/components/core_export.dart';
 import 'package:demandium/feature/booking/widget/booking_summery_widget.dart';
 import 'package:demandium/feature/booking/widget/provider_info.dart';
 import 'package:demandium/feature/booking/widget/service_man_info.dart';
+import '../../checkout/widget/payment_section/payment_method_button.dart';
 import 'booking_screen_shimmer.dart';
 
 class BookingDetailsSection extends StatelessWidget {
@@ -51,17 +52,19 @@ class BookingDetailsSection extends StatelessWidget {
                             overflow: TextOverflow.ellipsis),
                         const SizedBox(height: Dimensions.radiusDefault),
 
-                        Text(
+                       bookingDetailsContent.amountFlag==0? Text(
                             '${'transaction_id'.tr} : ${bookingDetailsContent.transactionId ?? ''}',
                             style: ubuntuRegular.copyWith(fontSize: Dimensions.fontSizeExtraSmall, color: Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.6)),
-                            overflow: TextOverflow.ellipsis),
+                            overflow: TextOverflow.ellipsis): 
+                            Text(''),
+                            
                       ],
                       ),
 
                       Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                        Text( '${bookingDetailsContent.isPaid == 0 ? 'unpaid'.tr: 'paid'.tr} ',
+                        Text( '${bookingDetailsContent.amountFlag != 0 ? 'unpaid'.tr: 'paid'.tr} ',
                             style: ubuntuMedium.copyWith(fontSize: Dimensions.fontSizeDefault,
-                                color: bookingDetailsContent.isPaid == 0?Theme.of(context).colorScheme.error : Colors.green, decoration: TextDecoration.none)
+                                color: bookingDetailsContent.amountFlag != 0?Theme.of(context).colorScheme.error : Colors.green, decoration: TextDecoration.none)
                         ),
                         const SizedBox(height: Dimensions.paddingSizeExtraLarge),
 
@@ -69,13 +72,19 @@ class BookingDetailsSection extends StatelessWidget {
                         Directionality(
                           textDirection: TextDirection.ltr,
                           child: Text(
-                              PriceConverter.convertPrice(bookingDetailsContent.totalBookingAmount!.toDouble(),isShowLongPrice: true),
+                              bookingDetailsContent.amountFlag != 0?PriceConverter.convertPrice((bookingDetailsContent.totalBookingAmount! - bookingDetailsContent.totalTaxAmount!).toDouble(),isShowLongPrice: true):PriceConverter.convertPrice(bookingDetailsContent.totalBookingAmount,isShowLongPrice: true),
                               style: ubuntuBold.copyWith(fontSize: Dimensions.fontSizeDefault, color: Theme.of(context).colorScheme.primary,)),
                         ),
                       ]),
+                      
                     ]),
                   ),
-
+                   bookingDetailsContent.amountFlag != 0 ?PaymentMethodButton(
+                                title: "pay_now".tr,
+                                paymentMethodName:
+                                    PaymentMethodName.digitalPayment,
+                                assetName: Images.pay,
+                              ):Container(),
                   const SizedBox(height: Dimensions.paddingSizeDefault),
                   BookingSummeryWidget(bookingDetailsContent: bookingDetailsContent),
 

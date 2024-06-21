@@ -1,6 +1,7 @@
 import 'package:demandium/feature/cart/widget/available_provider_widgets.dart';
 import 'package:demandium/feature/cart/widget/selected_provider_widget.dart';
 import 'package:demandium/feature/cart/widget/unselected_provider_widget.dart';
+import 'package:demandium/feature/checkout/controller/PaymentController.dart';
 import 'package:demandium/feature/provider/model/provider_model.dart';
 import 'package:get/get.dart';
 import 'package:demandium/components/core_export.dart';
@@ -66,6 +67,24 @@ class _CartScreenState extends State<CartScreen> {
         }else{
           Get.offAllNamed(RouteHelper.getMainRoute("home"));
         }},
+        actionWidget: InkWell(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text('Add More',
+                  textAlign: TextAlign.center,
+                  style: ubuntuMedium.copyWith(
+                    color: Color(0xFFFFCA3D) ,
+                    fontSize:  Dimensions.fontSizeDefault,
+                ),),
+            ),
+          ),
+            onTap:() {
+             Get.toNamed(RouteHelper.getMainRoute("home"));
+            }
+        )
+         
+        
       ),
       body: SafeArea(child: GetBuilder<CartController>(builder: (cartController){
 
@@ -223,7 +242,7 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                           Directionality(
                                             textDirection: TextDirection.ltr,
-                                            child: Text(PriceConverter.convertPrice(Get.find<CartController>().totalPrice),
+                                            child: Text(PriceConverter.convertPrice(Get.find<PaymentController>().selected_amount),
                                               style: ubuntuBold.copyWith(
                                                 color: Theme.of(context).colorScheme.error,
                                                 fontSize: Dimensions.fontSizeLarge,

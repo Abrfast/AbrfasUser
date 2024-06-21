@@ -31,7 +31,7 @@ class RowText extends StatelessWidget {
           ),
           Directionality(
             textDirection: TextDirection.ltr,
-            child: Text('${title.contains('Discount') || title.contains('خصم') ? '(-)': title == 'VAT' || title == 'برميل'? '(+)':''} ${PriceConverter.convertPrice(double.parse(price.toString()),isShowLongPrice:true)}',
+            child: Text('${title.contains('Discount') || title.contains('خصم') ? '(-)': title == 'GST' || title == 'برميل'? '(+)':''} ${PriceConverter.convertPrice(double.parse(price.toString()),isShowLongPrice:true)}',
               textAlign: TextAlign.right,),
           )
         ],
